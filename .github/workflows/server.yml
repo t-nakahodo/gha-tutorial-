@@ -2,7 +2,8 @@ name: test server
 
 on:
   push:
-
+    paths:
+      - 'server/**'
 # アクションにおけるデフォルト設定
 # https://docs.github.com/en/actions/using-jobs/setting-default-values-for-jobs
 defaults:
