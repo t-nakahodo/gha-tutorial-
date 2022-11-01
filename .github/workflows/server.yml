@@ -1,0 +1,32 @@
+name: test server
+
+on:
+  push:
+
+# アクションにおけるデフォルト設定
+# https://docs.github.com/en/actions/using-jobs/setting-default-values-for-jobs
+defaults:
+  run:
+    # このアクションは`server`ディレクトリに移動して行う
+    working-directory: server
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # ジョブで使用するリポジトリをチェックアウト
+      # https://github.com/actions/checkout
+      - name: checkout
+        uses: actions/checkout@v2
+      # nodeをセットアップ
+      # https://github.com/actions/setup-node
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: npm install
+        run: |
+          npm install
+      - name: run test
+        run: |
+          npm test
